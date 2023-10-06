@@ -1,0 +1,19 @@
+{
+  "marcadores": [
+    {
+      "nombre": "Xunta",
+      "descripcion": "Portal educativo",
+      "url": "https://www.edu.xunta.gal/"
+    },
+    {
+      "nombre": "Wikipedia",
+      "descripcion": "La enciclopedia libre.",
+      "url": "https://www.wikipedia.org/"
+    },
+    {
+      "nombre": "W3C",
+      "descripcion": "World Wide Web Consortium",
+      "url": "https://www.w3.org/"
+    }
+  ]
+}

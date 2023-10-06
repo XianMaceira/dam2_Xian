@@ -1,0 +1,634 @@
+{"STEAM": {"steam-user": [
+    {
+        "country": "Spain",
+        "game-library": {
+            "total": 20,
+            "game": [
+                {
+                    "release-date": "2020-11-10",
+                    "price": 59.99,
+                    "genre": "Action",
+                    "publisher": "Ubisoft",
+                    "developer": "Ubisoft Montreal",
+                    "title": "Assassin's Creed Valhalla"
+                },
+                {
+                    "release-date": "2015-05-19",
+                    "price": 29.99,
+                    "genre": "Role-playing",
+                    "publisher": "CD Projekt",
+                    "developer": "CD Projekt Red",
+                    "title": "The Witcher 3: Wild Hunt"
+                },
+                {
+                    "release-date": "2020-03-20",
+                    "price": 59.99,
+                    "genre": "First-person shooter",
+                    "publisher": "Bethesda Softworks",
+                    "developer": "id Software",
+                    "title": "Doom Eternal"
+                }
+            ]
+        },
+        "gender": "male",
+        "name": "Juan Perez",
+        "id": 123456789,
+        "machines": {"machine": [
+            {
+                "os": "Windows 10",
+                "cpu": "Intel Core i7-10700K",
+                "id": 1,
+                "storage": "1TB SSD",
+                "gpu": "Nvidia GeForce RTX 3080",
+                "ram": 32
+            },
+            {
+                "os": "Ubuntu 20.04",
+                "cpu": "AMD Ryzen 9 5900X",
+                "id": 2,
+                "gpu": "AMD Radeon RX 6900 XT",
+                "ram": 64
+            }
+        ]},
+        "games-played": 50,
+        "email": "juan.perez@example.com",
+        "friends": "Mark Johnson"
+    },
+    {
+        "country": "United States",
+        "game-library": {
+            "total": 15,
+            "game": [
+                {
+                    "release-date": "2016-02-26",
+                    "price": 14.99,
+                    "genre": "Simulation",
+                    "publisher": "ConcernedApe",
+                    "developer": "ConcernedApe",
+                    "title": "Stardew Valley"
+                },
+                {
+                    "release-date": "2018-01-25",
+                    "price": 19.99,
+                    "genre": "Platformer",
+                    "publisher": "Maddy Makes Games",
+                    "developer": "Maddy Makes Games",
+                    "title": "Celeste"
+                },
+                {
+                    "release-date": "2018-06-15",
+                    "price": 4.99,
+                    "genre": "Party",
+                    "publisher": "InnerSloth",
+                    "developer": "InnerSloth",
+                    "title": "Among Us"
+                }
+            ]
+        },
+        "gender": "female",
+        "name": "Alice Smith",
+        "id": 987654321,
+        "machines": {"machine": [
+            {
+                "os": "MacOS Catalina",
+                "cpu": "Apple M1",
+                "id": 1,
+                "storage": "512GB SSD",
+                "gpu": "Apple M1",
+                "ram": 16
+            },
+            {
+                "os": "Windows 11",
+                "cpu": "AMD Ryzen 7 5800X",
+                "id": 2,
+                "gpu": "Nvidia GeForce GTX 1660 Ti",
+                "ram": 32
+            }
+        ]},
+        "games-played": 100,
+        "email": "alice.smith@example.com",
+        "friends": "Bob Johnson, Claire Lee"
+    },
+    {
+        "country": "Canada",
+        "game-library": {
+            "total": 25,
+            "game": [
+                {
+                    "release-date": "2004-11-16",
+                    "price": 9.99,
+                    "genre": "Shooter",
+                    "publisher": "Valve Corporation",
+                    "developer": "Valve Corporation",
+                    "title": "Half-Life 2"
+                },
+                {
+                    "release-date": "2015-05-19",
+                    "price": 39.99,
+                    "genre": "Role-playing",
+                    "publisher": "CD Projekt",
+                    "developer": "CD Projekt RED",
+                    "title": "The Witcher 3: Wild Hunt"
+                },
+                {
+                    "release-date": "2011-04-19",
+                    "price": 9.99,
+                    "genre": "Puzzle-platformer",
+                    "publisher": "Valve Corporation",
+                    "developer": "Valve Corporation",
+                    "title": "Portal 2"
+                }
+            ]
+        },
+        "gender": "male",
+        "name": "John Doe",
+        "id": 123456789,
+        "machines": {"machine": [
+            {
+                "os": "Windows 10",
+                "cpu": "Intel Core i7-9700K",
+                "id": 1,
+                "storage": "2TB HDD + 1TB SSD",
+                "gpu": "Nvidia GeForce RTX 2080 Ti",
+                "ram": 32
+            },
+            {
+                "os": "Ubuntu 20.04",
+                "cpu": "AMD Ryzen 9 5900X",
+                "id": 2,
+                "storage": "1TB NVMe SSD",
+                "gpu": "AMD Radeon RX 6800 XT",
+                "ram": 64
+            }
+        ]},
+        "games-played": 500,
+        "email": "john.doe@example.com",
+        "friends": "Alice Smith, Bob Johnson, Claire Lee"
+    },
+    {
+        "country": "United States",
+        "game-library": {
+            "total": 5,
+            "game": [
+                {
+                    "release-date": "2015-01-30",
+                    "price": 19.99,
+                    "genre": "Adventure",
+                    "publisher": "Square Enix",
+                    "developer": "Dontnod Entertainment",
+                    "title": "Life is Strange"
+                },
+                {
+                    "release-date": "2015-09-15",
+                    "price": 9.99,
+                    "genre": "Role-playing",
+                    "publisher": "Toby Fox",
+                    "developer": "Toby Fox",
+                    "title": "Undertale"
+                },
+                {
+                    "release-date": "2016-02-26",
+                    "price": 14.99,
+                    "genre": "Simulation",
+                    "publisher": "Chucklefish",
+                    "developer": "ConcernedApe",
+                    "title": "Stardew Valley"
+                },
+                {
+                    "release-date": "2011-11-18",
+                    "price": 26.95,
+                    "genre": "Adventure",
+                    "publisher": "Mojang Studios",
+                    "developer": "Mojang Studios",
+                    "title": "Minecraft"
+                },
+                {
+                    "release-date": "2018-06-15",
+                    "price": 4.99,
+                    "genre": "Action",
+                    "publisher": "InnerSloth",
+                    "developer": "InnerSloth",
+                    "title": "Among Us"
+                }
+            ]
+        },
+        "gender": "non-binary",
+        "name": "Sam Lee",
+        "id": 2468101214,
+        "machines": {"machine": {
+            "os": "Windows 11",
+            "cpu": "AMD Ryzen 7 5800X",
+            "id": 1,
+            "storage": "1TB NVMe SSD",
+            "gpu": "Nvidia GeForce RTX 3070",
+            "ram": 32
+        }},
+        "games-played": 50,
+        "email": "sam.lee@example.com",
+        "friends": "None"
+    },
+    {
+        "country": "Argentina",
+        "game-library": {
+            "total": 50,
+            "game": [
+                {
+                    "release-date": "2015-05-19",
+                    "price": 29.99,
+                    "genre": "Action RPG",
+                    "publisher": "CD Projekt",
+                    "developer": "CD Projekt Red",
+                    "title": "The Witcher 3: Wild Hunt"
+                },
+                {
+                    "release-date": "2013-09-17",
+                    "price": 59.99,
+                    "genre": "Action-adventure",
+                    "publisher": "Rockstar Games",
+                    "developer": "Rockstar North",
+                    "title": "Grand Theft Auto V"
+                },
+                {
+                    "release-date": "2016-05-24",
+                    "price": 39.99,
+                    "genre": "Hero shooter",
+                    "publisher": "Blizzard Entertainment",
+                    "developer": "Blizzard Entertainment",
+                    "title": "Overwatch"
+                }
+            ]
+        },
+        "gender": "male",
+        "name": "Juan",
+        "id": 12345,
+        "machines": {"machine": [
+            {
+                "os": "Windows 10",
+                "cpu": "Intel Core i7-8700k",
+                "id": 1,
+                "storage": "512GB SSD + 1TB HDD",
+                "gpu": "NVIDIA GeForce GTX 1080 Ti",
+                "ram": 16
+            },
+            {
+                "os": "macOS Big Sur",
+                "cpu": "Apple M1",
+                "id": 2,
+                "storage": "1TB SSD",
+                "gpu": "Apple M1",
+                "ram": 16
+            }
+        ]},
+        "games-played": 30,
+        "email": "juan@gmail.com",
+        "friends": "Lucas, Maria, Carlos"
+    },
+    {
+        "country": "Spain",
+        "game-library": {
+            "total": 100,
+            "game": [
+                {
+                    "release-date": "2011-11-11",
+                    "price": 39.99,
+                    "genre": "Action RPG",
+                    "publisher": "Bethesda Softworks",
+                    "developer": "Bethesda Game Studios",
+                    "title": "The Elder Scrolls V: Skyrim"
+                },
+                {
+                    "release-date": "2014-09-02",
+                    "price": 19.99,
+                    "genre": "Life simulation",
+                    "publisher": "Electronic Arts",
+                    "developer": "Maxis",
+                    "title": "The Sims 4"
+                },
+                {
+                    "release-date": "2018-06-15",
+                    "price": 4.99,
+                    "genre": "Social deduction",
+                    "publisher": "Innersloth",
+                    "developer": "InnerSloth",
+                    "title": "Among Us"
+                },
+                {
+                    "release-date": "2011-11-18",
+                    "price": 26.95,
+                    "genre": "Sandbox",
+                    "publisher": "Microsoft Studios",
+                    "developer": "Mojang Studios",
+                    "title": "Minecraft"
+                }
+            ]
+        },
+        "gender": "female",
+        "name": "María",
+        "id": 98765,
+        "machines": {"machine": [
+            {
+                "os": "Windows 11",
+                "cpu": "AMD Ryzen 9 5900X",
+                "id": 1,
+                "storage": "1TB SSD + 2TB HDD",
+                "gpu": "NVIDIA GeForce RTX 3080 Ti",
+                "ram": 32
+            },
+            {
+                "os": "Ubuntu 20.04",
+                "cpu": "Intel Core i5-10600K",
+                "id": 2,
+                "gpu": "AMD Radeon RX 6800 XT",
+                "ram": 16
+            },
+            {
+                "os": "macOS Catalina",
+                "cpu": "Intel Core i9-10900K",
+                "id": 3,
+                "storage": "2TB SSD",
+                "gpu": "AMD Radeon Pro 5700 XT",
+                "ram": 64
+            }
+        ]},
+        "games-played": 50,
+        "email": "maria@hotmail.com",
+        "friends": "None"
+    },
+    {
+        "country": "United States",
+        "game-library": {
+            "total": 200,
+            "game": [
+                {
+                    "release-date": "2013-09-17",
+                    "price": 29.99,
+                    "genre": "Action-adventure",
+                    "publisher": "Rockstar Games",
+                    "developer": "Rockstar North",
+                    "title": "Grand Theft Auto V"
+                },
+                {
+                    "release-date": "2012-08-21",
+                    "price": "Free to play",
+                    "genre": "First-person shooter",
+                    "publisher": "Valve",
+                    "developer": "Valve",
+                    "title": "Counter-Strike: Global Offensive"
+                },
+                {
+                    "release-date": "2018-10-26",
+                    "price": 59.99,
+                    "genre": "Action-adventure",
+                    "publisher": "Rockstar Games",
+                    "developer": "Rockstar Studios",
+                    "title": "Red Dead Redemption 2"
+                },
+                {
+                    "release-date": "2020-07-14",
+                    "price": 49.99,
+                    "genre": "Action",
+                    "publisher": "505 Games",
+                    "developer": "Kojima Productions",
+                    "title": "Death Stranding"
+                }
+            ]
+        },
+        "gender": "male",
+        "name": "John",
+        "id": 12345,
+        "machines": {"machine": [
+            {
+                "os": "Windows 10",
+                "cpu": "Intel Core i7-11700K",
+                "id": 1,
+                "storage": "1TB NVMe SSD",
+                "gpu": "NVIDIA GeForce RTX 3070",
+                "ram": 16
+            },
+            {
+                "os": "Ubuntu 21.10",
+                "cpu": "AMD Ryzen 7 5800X",
+                "id": 2,
+                "gpu": "AMD Radeon RX 6900 XT",
+                "ram": 32
+            }
+        ]},
+        "games-played": 100,
+        "email": "john@gmail.com",
+        "friends": "None"
+    },
+    {
+        "country": "United States",
+        "game-library": {
+            "total": 150,
+            "game": [
+                {
+                    "release-date": "2013-09-17",
+                    "price": 29.99,
+                    "genre": "Action-Adventure",
+                    "publisher": "Rockstar Games",
+                    "developer": "Rockstar North",
+                    "title": "Grand Theft Auto V"
+                },
+                {
+                    "release-date": "2012-08-21",
+                    "price": "Free to Play",
+                    "genre": "First-Person Shooter",
+                    "publisher": "Valve Corporation",
+                    "developer": "Valve Corporation, Hidden Path Entertainment",
+                    "title": "Counter-Strike: Global Offensive"
+                },
+                {
+                    "release-date": "2018-10-26",
+                    "price": 59.99,
+                    "genre": "Action-Adventure",
+                    "publisher": "Rockstar Games",
+                    "developer": "Rockstar Studios",
+                    "title": "Red Dead Redemption 2"
+                },
+                {
+                    "release-date": "2017-07-25",
+                    "price": "Free to Play",
+                    "genre": "Battle Royale",
+                    "publisher": "Epic Games",
+                    "developer": "Epic Games",
+                    "title": "Fortnite"
+                }
+            ]
+        },
+        "gender": "male",
+        "name": "John",
+        "id": 12345,
+        "machines": {"machine": [
+            {
+                "os": "Windows 10",
+                "cpu": "Intel Core i7-10700K",
+                "id": 1,
+                "storage": "1TB SSD",
+                "gpu": "NVIDIA GeForce RTX 3070",
+                "ram": 16
+            },
+            {
+                "os": "macOS Monterey",
+                "cpu": "Apple M1",
+                "id": 2,
+                "storage": "512GB SSD",
+                "gpu": "Integrated Apple Graphics",
+                "ram": 16
+            },
+            {
+                "os": "Ubuntu 22.04",
+                "cpu": "AMD Ryzen 7 5800X",
+                "id": 3,
+                "storage": "2TB SSD",
+                "gpu": "AMD Radeon RX 6800",
+                "ram": 32
+            }
+        ]},
+        "games-played": 75,
+        "email": "john@gmail.com",
+        "friends": "None"
+    },
+    {
+        "country": "Singapur",
+        "game-library": {
+            "total": 100,
+            "game": [
+                {
+                    "release-date": "2011-11-11",
+                    "price": 39.99,
+                    "genre": "Action RPG",
+                    "publisher": "Bethesda Softworks",
+                    "developer": "Bethesda Game Studios",
+                    "title": "The Elder Scrolls V: Skyrim"
+                },
+                {
+                    "release-date": "2014-09-02",
+                    "price": 19.99,
+                    "genre": "Life simulation",
+                    "publisher": "Electronic Arts",
+                    "developer": "Maxis",
+                    "title": "The Sims 4"
+                },
+                {
+                    "release-date": "2018-06-15",
+                    "price": 4.99,
+                    "genre": "Social deduction",
+                    "publisher": "Innersloth",
+                    "developer": "InnerSloth",
+                    "title": "Among Us"
+                }
+            ]
+        },
+        "gender": "female",
+        "name": "María",
+        "id": 98765,
+        "machines": {"machine": [
+            {
+                "os": "Windows 11",
+                "cpu": "AMD Ryzen 9 5900X",
+                "id": 1,
+                "storage": "1TB SSD + 2TB HDD",
+                "gpu": "NVIDIA GeForce RTX 3080 Ti",
+                "ram": 32
+            },
+            {
+                "os": "Ubuntu 20.04",
+                "cpu": "Intel Core i5-10600K",
+                "id": 2,
+                "gpu": "AMD Radeon RX 6800 XT",
+                "ram": 16
+            },
+            {
+                "os": "macOS Catalina",
+                "cpu": "Intel Core i9-10900K",
+                "id": 3,
+                "storage": "2TB SSD",
+                "gpu": "AMD Radeon Pro 5700 XT",
+                "ram": 64
+            }
+        ]},
+        "games-played": 50,
+        "email": "maria@hotmail.com",
+        "friends": "None"
+    },
+    {
+        "country": "Spain",
+        "game-library": {
+            "total": 100,
+            "game": [
+                {
+                    "release-date": "2011-11-11",
+                    "price": 39.99,
+                    "genre": "Action RPG",
+                    "publisher": "Bethesda Softworks",
+                    "developer": "Bethesda Game Studios",
+                    "title": "The Elder Scrolls V: Skyrim"
+                },
+                {
+                    "release-date": "2014-09-02",
+                    "price": 19.99,
+                    "genre": "Life simulation",
+                    "publisher": "Electronic Arts",
+                    "developer": "Maxis",
+                    "title": "The Sims 4"
+                },
+                {
+                    "release-date": "2018-06-15",
+                    "price": 4.99,
+                    "genre": "Social deduction",
+                    "publisher": "Innersloth",
+                    "developer": "InnerSloth",
+                    "title": "Among Us"
+                },
+                {
+                    "release-date": "2018-10-26",
+                    "price": 59.99,
+                    "genre": "Action-adventure",
+                    "publisher": "Rockstar Games",
+                    "developer": "Rockstar Studios",
+                    "title": "Red Dead Redemption 2"
+                },
+                {
+                    "release-date": "2021-02-02",
+                    "price": 19.99,
+                    "genre": "Survival",
+                    "publisher": "Coffee Stain Publishing",
+                    "developer": "Iron Gate AB",
+                    "title": "Valheim"
+                }
+            ]
+        },
+        "gender": "female",
+        "name": "María",
+        "id": 98765,
+        "machines": {"machine": [
+            {
+                "os": "Windows 11",
+                "cpu": "AMD Ryzen 9 5900X",
+                "id": 1,
+                "storage": "1TB SSD + 2TB HDD",
+                "gpu": "NVIDIA GeForce RTX 3080 Ti",
+                "ram": 32
+            },
+            {
+                "os": "Ubuntu 20.04",
+                "cpu": "Intel Core i5-10600K",
+                "id": 2,
+                "gpu": "AMD Radeon RX 6800 XT",
+                "ram": 16
+            },
+            {
+                "os": "macOS Catalina",
+                "cpu": "Intel Core i9-10900K",
+                "id": 3,
+                "storage": "2TB SSD",
+                "gpu": "AMD Radeon Pro 5700 XT",
+                "ram": 64
+            }
+        ]},
+        "games-played": 50,
+        "email": "maria@hotmail.com",
+        "friends": "None"
+    }
+]}}

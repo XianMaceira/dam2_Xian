@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE STEAM[
+        <!ELEMENT STEAM (steam-user*)>
+        <!ELEMENT steam-user (id, name, email, machines, friends, games-played, game-library, country)>
+        <!ATTLIST steam-user gender CDATA #REQUIRED
+                xmlns CDATA #FIXED "namespace_whatever"
+                xmlns:xsi CDATA #FIXED "http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation CDATA #FIXED "schema.xsd">
+        <!ELEMENT id (#PCDATA)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT email (#PCDATA)>
+        <!ELEMENT machines (machine+)>
+        <!ELEMENT machine (os, cpu, gpu, ram, storage?)>
+        <!ATTLIST machine id CDATA #REQUIRED>
+        <!ELEMENT os (#PCDATA)>
+        <!ELEMENT cpu (#PCDATA)>
+        <!ELEMENT gpu (#PCDATA)>
+        <!ELEMENT ram (#PCDATA)>
+        <!ELEMENT storage (#PCDATA)>
+        <!ELEMENT friends (#PCDATA)>
+        <!ELEMENT games-played (#PCDATA)>
+        <!ELEMENT game-library (game+)>
+        <!ATTLIST game-library total CDATA #REQUIRED>
+        <!ELEMENT game (title, genre, developer, publisher, release-date, price)>
+        <!ELEMENT title (#PCDATA)>
+        <!ELEMENT genre (#PCDATA)>
+        <!ELEMENT developer (#PCDATA)>
+        <!ELEMENT publisher (#PCDATA)>
+        <!ELEMENT release-date (#PCDATA)>
+        <!ELEMENT price (#PCDATA)>
+        <!ELEMENT country (#PCDATA)>
+        ]>
+<STEAM>
+    <steam-user gender="male">
+        <id>123456789</id>
+        <name>Juan Perez</name>
+        <email>juan.perez@example.com</email>
+        <machines>
+            <machine id="1">
+                <os>Windows 10</os>
+                <cpu>Intel Core i7-10700K</cpu>
+                <gpu>Nvidia GeForce RTX 3080</gpu>
+                <ram>32</ram>
+                <storage>1TB SSD</storage>
+            </machine>
+            <machine id="2">
+                <os>Ubuntu 20.04</os>
+                <cpu>AMD Ryzen 9 5900X</cpu>
+                <gpu>AMD Radeon RX 6900 XT</gpu>
+                <ram>64</ram>
+            </machine>
+        </machines>
+        <friends>Mark Johnson</friends>
+        <games-played>50</games-played>
+        <game-library total="20">
+            <game>
+                <title>Assassin's Creed Valhalla</title>
+                <genre>Action</genre>
+                <developer>Ubisoft Montreal</developer>
+                <publisher>Ubisoft</publisher>
+                <release-date>2020-11-10</release-date>
+                <price>59.99</price>
+            </game>
+            <game>
+                <title>The Witcher 3: Wild Hunt</title>
+                <genre>Role-playing</genre>
+                <developer>CD Projekt Red</developer>
+                <publisher>CD Projekt</publisher>
+                <release-date>2015-05-19</release-date>
+                <price>29.99</price>
+            </game>
+            <game>
+                <title>Doom Eternal</title>
+                <genre>First-person shooter</genre>
+                <developer>id Software</developer>
+                <publisher>Bethesda Softworks</publisher>
+                <release-date>2020-03-20</release-date>
+                <price>59.99</price>
+            </game>
+            <!-- ... -->
+        </game-library>
+        <country>Spain</country>
+    </steam-user>
+
+    <steam-user gender="female">
+        <id>987654321</id>
+        <name>Alice Smith</name>
+        <email>alice.smith@example.com</email>
+        <machines>
+            <machine id="1">
+                <os>MacOS Catalina</os>
+                <cpu>Apple M1</cpu>
+                <gpu>Apple M1</gpu>
+                <ram>16</ram>
+                <storage>512GB SSD</storage>
+            </machine>
+            <machine id="2">
+                <os>Windows 11</os>
+                <cpu>AMD Ryzen 7 5800X</cpu>
+                <gpu>Nvidia GeForce GTX 1660 Ti</gpu>
+                <ram>32</ram>
+            </machine>
+        </machines>
+        <friends>Bob Johnson, Claire Lee</friends>
+        <games-played>100</games-played>
+        <game-library total="15">
+            <game>
+                <title>Stardew Valley</title>
+                <genre>Simulation</genre>
+                <developer>ConcernedApe</developer>
+                <publisher>ConcernedApe</publisher>
+                <release-date>2016-02-26</release-date>
+                <price>14.99</price>
+            </game>
+            <game>
+                <title>Celeste</title>
+                <genre>Platformer</genre>
+                <developer>Maddy Makes Games</developer>
+                <publisher>Maddy Makes Games</publisher>
+                <release-date>2018-01-25</release-date>
+                <price>19.99</price>
+            </game>
+            <game>
+                <title>Among Us</title>
+                <genre>Party</genre>
+                <developer>InnerSloth</developer>
+                <publisher>InnerSloth</publisher>
+                <release-date>2018-06-15</release-date>
+                <price>4.99</price>
+            </game>
+            <!-- ... -->
+        </game-library>
+        <country>United States</country>
+    </steam-user>
+
+    <steam-user gender="male">
+        <id>123456789</id>
+        <name>John Doe</name>
+        <email>john.doe@example.com</email>
+        <machines>
+            <machine id="1">
+                <os>Windows 10</os>
+                <cpu>Intel Core i7-9700K</cpu>
+                <gpu>Nvidia GeForce RTX 2080 Ti</gpu>
+                <ram>32</ram>
+                <storage>2TB HDD + 1TB SSD</storage>
+            </machine>
+            <machine id="2">
+                <os>Ubuntu 20.04</os>
+                <cpu>AMD Ryzen 9 5900X</cpu>
+                <gpu>AMD Radeon RX 6800 XT</gpu>
+                <ram>64</ram>
+                <storage>1TB NVMe SSD</storage>
+            </machine>
+        </machines>
+        <friends>Alice Smith, Bob Johnson, Claire Lee</friends>
+        <games-played>500</games-played>
+        <game-library total="25">
+            <game>
+                <title>Half-Life 2</title>
+                <genre>Shooter</genre>
+                <developer>Valve Corporation</developer>
+                <publisher>Valve Corporation</publisher>
+                <release-date>2004-11-16</release-date>
+                <price>9.99</price>
+            </game>
+            <game>
+                <title>The Witcher 3: Wild Hunt</title>
+                <genre>Role-playing</genre>
+                <developer>CD Projekt RED</developer>
+                <publisher>CD Projekt</publisher>
+                <release-date>2015-05-19</release-date>
+                <price>39.99</price>
+            </game>
+            <game>
+                <title>Portal 2</title>
+                <genre>Puzzle-platformer</genre>
+                <developer>Valve Corporation</developer>
+                <publisher>Valve Corporation</publisher>
+                <release-date>2011-04-19</release-date>
+                <price>9.99</price>
+            </game>
+            <!-- ... -->
+        </game-library>
+        <country>Canada</country>
+    </steam-user>
+
+    <steam-user gender="non-binary">
+        <id>2468101214</id>
+        <name>Sam Lee</name>
+        <email>sam.lee@example.com</email>
+        <machines>
+            <machine id="1">
+                <os>Windows 11</os>
+                <cpu>AMD Ryzen 7 5800X</cpu>
+                <gpu>Nvidia GeForce RTX 3070</gpu>
+                <ram>32</ram>
+                <storage>1TB NVMe SSD</storage>
+            </machine>
+        </machines>
+        <friends>None</friends>
+        <games-played>50</games-played>
+        <game-library total="5">
+            <game>
+                <title>Life is Strange</title>
+                <genre>Adventure</genre>
+                <developer>Dontnod Entertainment</developer>
+                <publisher>Square Enix</publisher>
+                <release-date>2015-01-30</release-date>
+                <price>19.99</price>
+            </game>
+            <game>
+                <title>Undertale</title>
+                <genre>Role-playing</genre>
+                <developer>Toby Fox</developer>
+                <publisher>Toby Fox</publisher>
+                <release-date>2015-09-15</release-date>
+                <price>9.99</price>
+            </game>
+            <game>
+                <title>Stardew Valley</title>
+                <genre>Simulation</genre>
+                <developer>ConcernedApe</developer>
+                <publisher>Chucklefish</publisher>
+                <release-date>2016-02-26</release-date>
+                <price>14.99</price>
+            </game>
+            <game>
+                <title>Minecraft</title>
+                <genre>Adventure</genre>
+                <developer>Mojang Studios</developer>
+                <publisher>Mojang Studios</publisher>
+                <release-date>2011-11-18</release-date>
+                <price>26.95</price>
+            </game>
+            <game>
+                <title>Among Us</title>
+                <genre>Action</genre>
+                <developer>InnerSloth</developer>
+                <publisher>InnerSloth</publisher>
+                <release-date>2018-06-15</release-date>
+                <price>4.99</price>
+            </game>
+        </game-library>
+        <country>United States</country>
+    </steam-user>
+
+    <steam-user gender="male">
+        <id>12345</id>
+        <name>Juan</name>
+        <email>juan@gmail.com</email>
+        <machines>
+            <machine id="1">
+                <os>Windows 10</os>
+                <cpu>Intel Core i7-8700k</cpu>
+                <gpu>NVIDIA GeForce GTX 1080 Ti</gpu>
+                <ram>16</ram>
+                <storage>512GB SSD + 1TB HDD</storage>
+            </machine>
+            <machine id="2">
+                <os>macOS Big Sur</os>
+                <cpu>Apple M1</cpu>
+                <gpu>Apple M1</gpu>
+                <ram>16</ram>
+                <storage>1TB SSD</storage>
+            </machine>
+        </machines>
+        <friends>Lucas, Maria, Carlos</friends>
+        <games-played>30</games-played>
+        <game-library total="50">
+            <game>
+                <title>The Witcher 3: Wild Hunt</title>
+                <genre>Action RPG</genre>
+                <developer>CD Projekt Red</developer>
+                <publisher>CD Projekt</publisher>
+                <release-date>2015-05-19</release-date>
+                <price>29.99</price>
+            </game>
+            <game>
+                <title>Grand Theft Auto V</title>
+                <genre>Action-adventure</genre>
+                <developer>Rockstar North</developer>
+                <publisher>Rockstar Games</publisher>
+                <release-date>2013-09-17</release-date>
+                <price>59.99</price>
+            </game>
+            <game>
+                <title>Overwatch</title>
+                <genre>Hero shooter</genre>
+                <developer>Blizzard Entertainment</developer>
+                <publisher>Blizzard Entertainment</publisher>
+                <release-date>2016-05-24</release-date>
+                <price>39.99</price>
+            </game>
+        </game-library>
+        <country>Argentina</country>
+    </steam-user>
+
+    <steam-user gender="female">
+        <id>98765</id>
+        <name>María</name>
+        <email>maria@hotmail.com</email>
+        <machines>
+            <machine id="1">
+                <os>Windows 11</os>
+                <cpu>AMD Ryzen 9 5900X</cpu>
+                <gpu>NVIDIA GeForce RTX 3080 Ti</gpu>
+                <ram>32</ram>
+                <storage>1TB SSD + 2TB HDD</storage>
+            </machine>
+            <machine id="2">
+                <os>Ubuntu 20.04</os>
+                <cpu>Intel Core i5-10600K</cpu>
+                <gpu>AMD Radeon RX 6800 XT</gpu>
+                <ram>16</ram>
+            </machine>
+            <machine id="3">
+                <os>macOS Catalina</os>
+                <cpu>Intel Core i9-10900K</cpu>
+                <gpu>AMD Radeon Pro 5700 XT</gpu>
+                <ram>64</ram>
+                <storage>2TB SSD</storage>
+            </machine>
+        </machines>
+        <friends>None</friends>
+        <games-played>50</games-played>
+        <game-library total="100">
+            <game>
+                <title>The Elder Scrolls V: Skyrim</title>
+                <genre>Action RPG</genre>
+                <developer>Bethesda Game Studios</developer>
+                <publisher>Bethesda Softworks</publisher>
+                <release-date>2011-11-11</release-date>
+                <price>39.99</price>
+            </game>
+            <game>
+                <title>The Sims 4</title>
+                <genre>Life simulation</genre>
+                <developer>Maxis</developer>
+                <publisher>Electronic Arts</publisher>
+                <release-date>2014-09-02</release-date>
+                <price>19.99</price>
+            </game>
+            <game>
+                <title>Among Us</title>
+                <genre>Social deduction</genre>
+                <developer>InnerSloth</developer>
+                <publisher>Innersloth</publisher>
+                <release-date>2018-06-15</release-date>
+                <price>4.99</price>
+            </game>
+            <game>
+                <title>Minecraft</title>
+                <genre>Sandbox</genre>
+                <developer>Mojang Studios</developer>
+                <publisher>Microsoft Studios</publisher>
+                <release-date>2011-11-18</release-date>
+                <price>26.95</price>
+            </game>
+        </game-library>
+        <country>Spain</country>
+    </steam-user>
+
+    <steam-user gender="male">
+        <id>12345</id>
+        <name>John</name>
+        <email>john@gmail.com</email>
+        <machines>
+            <machine id="1">
+                <os>Windows 10</os>
+                <cpu>Intel Core i7-11700K</cpu>
+                <gpu>NVIDIA GeForce RTX 3070</gpu>
+                <ram>16</ram>
+                <storage>1TB NVMe SSD</storage>
+            </machine>
+            <machine id="2">
+                <os>Ubuntu 21.10</os>
+                <cpu>AMD Ryzen 7 5800X</cpu>
+                <gpu>AMD Radeon RX 6900 XT</gpu>
+                <ram>32</ram>
+            </machine>
+        </machines>
+        <friends>None</friends>
+        <games-played>100</games-played>
+        <game-library total="200">
+            <game>
+                <title>Grand Theft Auto V</title>
+                <genre>Action-adventure</genre>
+                <developer>Rockstar North</developer>
+                <publisher>Rockstar Games</publisher>
+                <release-date>2013-09-17</release-date>
+                <price>29.99</price>
+            </game>
+            <game>
+                <title>Counter-Strike: Global Offensive</title>
+                <genre>First-person shooter</genre>
+                <developer>Valve</developer>
+                <publisher>Valve</publisher>
+                <release-date>2012-08-21</release-date>
+                <price>Free to play</price>
+            </game>
+            <game>
+                <title>Red Dead Redemption 2</title>
+                <genre>Action-adventure</genre>
+                <developer>Rockstar Studios</developer>
+                <publisher>Rockstar Games</publisher>
+                <release-date>2018-10-26</release-date>
+                <price>59.99</price>
+            </game>
+            <game>
+                <title>Death Stranding</title>
+                <genre>Action</genre>
+                <developer>Kojima Productions</developer>
+                <publisher>505 Games</publisher>
+                <release-date>2020-07-14</release-date>
+                <price>49.99</price>
+            </game>
+        </game-library>
+        <country>United States</country>
+    </steam-user>
+
+    <steam-user gender="male">
+        <id>12345</id>
+        <name>John</name>
+        <email>john@gmail.com</email>
+        <machines>
+            <machine id="1">
+                <os>Windows 10</os>
+                <cpu>Intel Core i7-10700K</cpu>
+                <gpu>NVIDIA GeForce RTX 3070</gpu>
+                <ram>16</ram>
+                <storage>1TB SSD</storage>
+            </machine>
+            <machine id="2">
+                <os>macOS Monterey</os>
+                <cpu>Apple M1</cpu>
+                <gpu>Integrated Apple Graphics</gpu>
+                <ram>16</ram>
+                <storage>512GB SSD</storage>
+            </machine>
+            <machine id="3">
+                <os>Ubuntu 22.04</os>
+                <cpu>AMD Ryzen 7 5800X</cpu>
+                <gpu>AMD Radeon RX 6800</gpu>
+                <ram>32</ram>
+                <storage>2TB SSD</storage>
+            </machine>
+        </machines>
+        <friends>None</friends>
+        <games-played>75</games-played>
+        <game-library total="150">
+            <game>
+                <title>Grand Theft Auto V</title>
+                <genre>Action-Adventure</genre>
+                <developer>Rockstar North</developer>
+                <publisher>Rockstar Games</publisher>
+                <release-date>2013-09-17</release-date>
+                <price>29.99</price>
+            </game>
+            <game>
+                <title>Counter-Strike: Global Offensive</title>
+                <genre>First-Person Shooter</genre>
+                <developer>Valve Corporation, Hidden Path Entertainment</developer>
+                <publisher>Valve Corporation</publisher>
+                <release-date>2012-08-21</release-date>
+                <price>Free to Play</price>
+            </game>
+            <game>
+                <title>Red Dead Redemption 2</title>
+                <genre>Action-Adventure</genre>
+                <developer>Rockstar Studios</developer>
+                <publisher>Rockstar Games</publisher>
+                <release-date>2018-10-26</release-date>
+                <price>59.99</price>
+            </game>
+            <game>
+                <title>Fortnite</title>
+                <genre>Battle Royale</genre>
+                <developer>Epic Games</developer>
+                <publisher>Epic Games</publisher>
+                <release-date>2017-07-25</release-date>
+                <price>Free to Play</price>
+            </game>
+        </game-library>
+        <country>United States</country>
+    </steam-user>
+
+    <steam-user gender="female">
+        <id>98765</id>
+        <name>María</name>
+        <email>maria@hotmail.com</email>
+        <machines>
+            <machine id="1">
+                <os>Windows 11</os>
+                <cpu>AMD Ryzen 9 5900X</cpu>
+                <gpu>NVIDIA GeForce RTX 3080 Ti</gpu>
+                <ram>32</ram>
+                <storage>1TB SSD + 2TB HDD</storage>
+            </machine>
+            <machine id="2">
+                <os>Ubuntu 20.04</os>
+                <cpu>Intel Core i5-10600K</cpu>
+                <gpu>AMD Radeon RX 6800 XT</gpu>
+                <ram>16</ram>
+            </machine>
+            <machine id="3">
+                <os>macOS Catalina</os>
+                <cpu>Intel Core i9-10900K</cpu>
+                <gpu>AMD Radeon Pro 5700 XT</gpu>
+                <ram>64</ram>
+                <storage>2TB SSD</storage>
+            </machine>
+        </machines>
+        <friends>None</friends>
+        <games-played>50</games-played>
+        <game-library total="100">
+            <game>
+                <title>The Elder Scrolls V: Skyrim</title>
+                <genre>Action RPG</genre>
+                <developer>Bethesda Game Studios</developer>
+                <publisher>Bethesda Softworks</publisher>
+                <release-date>2011-11-11</release-date>
+                <price>39.99</price>
+            </game>
+            <game>
+                <title>The Sims 4</title>
+                <genre>Life simulation</genre>
+                <developer>Maxis</developer>
+                <publisher>Electronic Arts</publisher>
+                <release-date>2014-09-02</release-date>
+                <price>19.99</price>
+            </game>
+            <game>
+                <title>Among Us</title>
+                <genre>Social deduction</genre>
+                <developer>InnerSloth</developer>
+                <publisher>Innersloth</publisher>
+                <release-date>2018-06-15</release-date>
+                <price>4.99</price>
+            </game>
+        </game-library>
+        <country>Singapur</country>
+    </steam-user>
+
+    <steam-user gender="female">
+        <id>98765</id>
+        <name>María</name>
+        <email>maria@hotmail.com</email>
+        <machines>
+            <machine id="1">
+                <os>Windows 11</os>
+                <cpu>AMD Ryzen 9 5900X</cpu>
+                <gpu>NVIDIA GeForce RTX 3080 Ti</gpu>
+                <ram>32</ram>
+                <storage>1TB SSD + 2TB HDD</storage>
+            </machine>
+            <machine id="2">
+                <os>Ubuntu 20.04</os>
+                <cpu>Intel Core i5-10600K</cpu>
+                <gpu>AMD Radeon RX 6800 XT</gpu>
+                <ram>16</ram>
+            </machine>
+            <machine id="3">
+                <os>macOS Catalina</os>
+                <cpu>Intel Core i9-10900K</cpu>
+                <gpu>AMD Radeon Pro 5700 XT</gpu>
+                <ram>64</ram>
+                <storage>2TB SSD</storage>
+            </machine>
+        </machines>
+        <friends>None</friends>
+        <games-played>50</games-played>
+        <game-library total="100">
+            <game>
+                <title>The Elder Scrolls V: Skyrim</title>
+                <genre>Action RPG</genre>
+                <developer>Bethesda Game Studios</developer>
+                <publisher>Bethesda Softworks</publisher>
+                <release-date>2011-11-11</release-date>
+                <price>39.99</price>
+            </game>
+            <game>
+                <title>The Sims 4</title>
+                <genre>Life simulation</genre>
+                <developer>Maxis</developer>
+                <publisher>Electronic Arts</publisher>
+                <release-date>2014-09-02</release-date>
+                <price>19.99</price>
+            </game>
+            <game>
+                <title>Among Us</title>
+                <genre>Social deduction</genre>
+                <developer>InnerSloth</developer>
+                <publisher>Innersloth</publisher>
+                <release-date>2018-06-15</release-date>
+                <price>4.99</price>
+            </game>
+            <game>
+                <title>Red Dead Redemption 2</title>
+                <genre>Action-adventure</genre>
+                <developer>Rockstar Studios</developer>
+                <publisher>Rockstar Games</publisher>
+                <release-date>2018-10-26</release-date>
+                <price>59.99</price>
+            </game>
+            <game>
+                <title>Valheim</title>
+                <genre>Survival</genre>
+                <developer>Iron Gate AB</developer>
+                <publisher>Coffee Stain Publishing</publisher>
+                <release-date>2021-02-02</release-date>
+                <price>19.99</price>
+            </game>
+        </game-library>
+        <country>Spain</country>
+    </steam-user>
+</STEAM>

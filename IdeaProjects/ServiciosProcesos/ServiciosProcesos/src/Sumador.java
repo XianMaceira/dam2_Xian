@@ -1,5 +1,3 @@
-import java.io.*;
-
 public class Sumador {
     public static int sumar(int n1, int n2) {
         int suma = 0;

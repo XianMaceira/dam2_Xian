@@ -38,7 +38,7 @@ public class Main {
                 System.out.println("El archivo está vacío: " + nombreFichero);
             }
 
-            br.close(); // Cerrar el archivo después de leerlo.
+            br.close();
         } catch (FileNotFoundException e) {
             System.out.println("No se pudo abrir " + nombreFichero);
         } catch (IOException e) {
@@ -69,6 +69,6 @@ public class Main {
         }
         Thread.sleep(5000);
         int sumaTotal = getSumaTotal(NUM_PROCESOS);
-        System.out.println("La suma total es:" + sumaTotal);
+        System.out.println("La suma total es: " + sumaTotal);
     }
 }

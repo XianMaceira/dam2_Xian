@@ -4,30 +4,61 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-    public class FileHandler {
-        private File file;
+public class FileHandler {
+    private static final String FILE_NAME = "usuarios.bin";
+    private static final byte[] HEADER = { (byte) 0xFF, (byte) 0xEE, (byte) 0x20, (byte) 0x23, (byte) 0xEE, (byte) 0xFF };
 
 
-        public void createFile() throws IOException {
-            if (!file.exists()) {
-                file.createNewFile();
+    // Leer usuarios del fichero
+    public List<User> readUsers() {
+        List<User> users = new ArrayList<>();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+            byte[] header = new byte[HEADER.length];
+            ois.read(header);
+
+            // Verificar la cabecera
+            if (isHeaderValid(header)) {
+                // Leer los usuarios
+                while (true) {
+                    User user = (User) ois.readObject();
+                    users.add(user);
+                }
             }
+        } catch (EOFException e) {
+            // Fin del archivo
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
+        return users;
+    }
 
-        public static List<User> readUsers() {
-            HashMap<String, User> users = ;
-            // Implementar la lectura de usuarios desde el archivo binario
-            return users;
-        }
+    // Escribir usuarios en el fichero
+    public void writeUsers(List<User> users) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
+            oos.write(HEADER);
 
-        public static void writeUsers(List<User> users) {
-            // Implementar la escritura de usuarios en el archivo binario
-        }
-
-        public static void addUser(User user) {
-            // Implementar la lógica para agregar un usuario al archivo
+            for (User user : users) {
+                oos.writeObject(user);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
+    // Verificar la cabecera del archivo
+    private boolean isHeaderValid(byte[] header) {
+        if (header.length != HEADER.length) {
+            return false;
+        }
+
+        for (int i = 0; i < HEADER.length; i++) {
+            if (header[i] != HEADER[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
 
 

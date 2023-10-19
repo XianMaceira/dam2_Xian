@@ -6,7 +6,7 @@ public class Users {
     private HashMap<String, User> users;
 
     public Users() {
-        users = new HashMap<>();
+        this.users = new HashMap<>();
     }
 
     // Agregar user

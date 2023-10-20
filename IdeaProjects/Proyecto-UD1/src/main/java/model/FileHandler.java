@@ -8,6 +8,9 @@ public class FileHandler {
     private static final String FILE_NAME = "usuarios.bin";
     private static final byte[] HEADER = { (byte) 0xFF, (byte) 0xEE, (byte) 0x20, (byte) 0x23, (byte) 0xEE, (byte) 0xFF };
 
+    public FileHandler(String filename) {
+    }
+
 
     // Leer usuarios del fichero
     public List<User> readUsers() {

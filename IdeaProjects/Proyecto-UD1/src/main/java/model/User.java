@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class User implements Serializable {
     private String name;
@@ -45,5 +46,16 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public class PassHashGen {
+        public static String PassHashGen(String passwd) {
+            return BCrypt.hashpw(passwd, BCrypt.gensalt());
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "User [name=" + name + ", age=" + age + ", email=" + email + "]";
     }
 }

@@ -11,7 +11,7 @@ public class Main {
 
 	String name = "admin";
 	String passwd = "admin";
-	String passwdHash = User.PassHashGen.PassHashGen(passwd);
+	String passwdHash = User.generateHash(passwd);
 	int age = 19;
 	String mail = "admin@admin.com";
 	User usuario = new User(name, passwdHash, age, mail);

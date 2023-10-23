@@ -60,5 +60,15 @@ public class Login extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnIniciarSesion) {
+			String userName = textoUsuario.getText();
+			String passwd = textoContraseña.getText();
+			boolean correctLogIn = app.login(userName, passwd);
+			if (correctLogIn) {
+
+			} else {
+
+			}
+		}
 	}
 }

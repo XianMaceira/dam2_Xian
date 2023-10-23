@@ -1,7 +1,8 @@
 package model;
 
-import java.io.Serializable;
 import org.mindrot.jbcrypt.BCrypt;
+
+import java.io.Serializable;
 
 public class User implements Serializable {
     private String name;
@@ -48,11 +49,25 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public class PassHashGen {
-        public static String PassHashGen(String passwd) {
-            return BCrypt.hashpw(passwd, BCrypt.gensalt());
+
+    public static String generateHash(String passwd) {
+
+        // Generar un hash Bcrypt
+        String hashedPassword = BCrypt.hashpw(passwd, BCrypt.gensalt());
+
+        // Imprimir el hash resultante
+        System.out.println("Hash Bcrypt: " + hashedPassword);
+
+        // Verificar una contraseña
+        String candidatePassword = "abc";
+        if (BCrypt.checkpw(candidatePassword, hashedPassword)) {
+            System.out.println("La contraseña es válida");
+        } else {
+            System.out.println("La contraseña no es válida");
         }
+        return hashedPassword;
     }
+
 
     @Override
     public String toString() {

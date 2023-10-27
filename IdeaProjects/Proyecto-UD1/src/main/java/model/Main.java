@@ -10,10 +10,9 @@ public class Main {
 	}
 
 	String name = "admin";
-	String passwd = "admin";
-	String passwdHash = User.generateHash(passwd);
-	int age = 19;
-	String mail = "admin@admin.com";
-	User usuario = new User(name, passwdHash, age, mail);
+	String password = "admin";
+	String age = "0";
+	String mail = "admin@admin.local";
+	User usuario = new User(name, password, age, mail);
 
 }

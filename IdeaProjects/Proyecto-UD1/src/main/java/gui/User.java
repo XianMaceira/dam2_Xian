@@ -7,6 +7,7 @@ import java.io.File;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicOptionPaneUI;
 
 import model.App;
 
@@ -88,6 +89,23 @@ public class User extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
+		//Boton Ver Datos
+		if(e.getSource() == btnVerDatos) {
+/*
+			App app = new App();
+
+			String name = app.getCurrUser().getName();
+			String age = app.getCurrUser().getAge();
+			String mail = app.getCurrUser().getEmail();
+
+
+			UserDetails userDetailsWindow = new UserDetails(app, name, age, mail);
+			userDetailsWindow.setVisible(true); */
+		}
+
+
+		// Boton Exportar Usuarios
 		if(e.getSource() == btnExportarUsuarios) {
 			System.out.println("Exportar usuario (ZIP)");
 			JFileChooser fileChooser = new JFileChooser();
@@ -102,5 +120,6 @@ public class User extends JFrame implements ActionListener {
 			}
 		}
 	}
+
 
 }

@@ -6,7 +6,7 @@ public class Users {
     private HashMap<String, User> users = new HashMap<>();
 
     public Users() {
-        User user = new User("admin", "admin", 0, "admin@admin");
+        User user = new User("admin", "admin", "0", "admin@admin");
         users.put(user.getName(), user);
     }
 

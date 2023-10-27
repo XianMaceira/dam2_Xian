@@ -6,13 +6,13 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private String name;
-    private String passwordHash;
-    private int age;
+    private String password;
+    private String age;
     private String email;
 
-    public User(String name, String passwordHash, int age, String email) {
+    public User(String name, String password, String age, String email) {
         this.name = name;
-        this.passwordHash = passwordHash;
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt(10));
         this.age = age;
         this.email = email;
     }
@@ -26,18 +26,18 @@ public class User implements Serializable {
     }
 
     public String getPasswordHash() {
-        return passwordHash;
+        return password;
     }
 
     public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+        this.password = passwordHash;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -49,11 +49,23 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public void checkLogin(String password) {
 
-    public static String generateHash(String passwd) {
+        String candidatePassword = password;
+
+
+        if (BCrypt.checkpw(candidatePassword, password)) {
+            System.out.println("La contraseña es válida");
+        } else {
+            System.out.println("La contraseña no es válida");
+        }
+    }
+
+
+   /* public static String generateHash(String passwd) {
 
         // Generar un hash Bcrypt
-        String hashedPassword = BCrypt.hashpw(passwd, BCrypt.gensalt());
+        String hashedPassword = BCrypt.hashpw(passwd, BCrypt.gensalt(10));
 
         // Imprimir el hash resultante
         System.out.println("Hash Bcrypt: " + hashedPassword);
@@ -66,7 +78,7 @@ public class User implements Serializable {
             System.out.println("La contraseña no es válida");
         }
         return hashedPassword;
-    }
+    }*/
 
 
     @Override

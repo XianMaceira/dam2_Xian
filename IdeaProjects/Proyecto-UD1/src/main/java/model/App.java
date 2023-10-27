@@ -9,6 +9,9 @@ public class App {
     private Users users;
     private Session session;
 
+    private User currUser;
+
+
     public App() {
         users = new Users();
     }
@@ -20,12 +23,21 @@ public class App {
 
             if (BCrypt.checkpw(passwd, hash)) {
                 System.out.println("Logged in");
+                currUser = usuario;
                 return true;
             }
         }
         System.out.println("Log In Failed");
         return false;
+
+
     }
+
+    public User getCurrUser() {
+        return currUser;
+    }
+
+
 
     public Session getSession() {
         return session;

@@ -8,20 +8,25 @@ import java.util.Date;
 public class Session {
     private User currentUser;
 
-    public Session(User currentUser) {
+
+    public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
 
-    public void login(String user, String pass) {
+    public User getCurrentUser() {
+        return currentUser;
+    }
+/*  public void login(String user, String pass) {
         if (currentUser == null) {
             if ("admin".equals(user) && "admin".equals(pass)) {
                 currentUser = new User("admin", "admin", "0", "admin@admin");
                 logSessionEvent("LOGIN");
             }
         }
-    }
+    }*/
 
-    public void logout() {
+
+  /*  public void logout() {
         if (currentUser != null) {
             logSessionEvent("LOGOUT");
             currentUser = null;
@@ -42,5 +47,5 @@ public class Session {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }

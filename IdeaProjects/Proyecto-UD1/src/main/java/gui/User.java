@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicOptionPaneUI;
 
 import model.App;
+import model.Users;
 
 public class User extends JFrame implements ActionListener {
 
@@ -22,11 +23,12 @@ public class User extends JFrame implements ActionListener {
 	private JButton btnCrearNuevoUsuario;
 	private JButton btnCerrarSesion;
 	private App app;
+	private User currentUser;
 	private String nombreUsuario;
 
 	public User(App app, String nombreUsuario) {
 		this.app = app;
-		this.nombreUsuario = nombreUsuario;
+		this.currentUser = currentUser;
 		int paddingLeft = 75;
 
 		setTitle("Aplicación usuarios");
@@ -92,16 +94,7 @@ public class User extends JFrame implements ActionListener {
 
 		//Boton Ver Datos
 		if(e.getSource() == btnVerDatos) {
-/*
-			App app = new App();
-
-			String name = app.getCurrUser().getName();
-			String age = app.getCurrUser().getAge();
-			String mail = app.getCurrUser().getEmail();
-
-
-			UserDetails userDetailsWindow = new UserDetails(app, name, age, mail);
-			userDetailsWindow.setVisible(true); */
+			app.showUserDetailsWindow();
 		}
 
 

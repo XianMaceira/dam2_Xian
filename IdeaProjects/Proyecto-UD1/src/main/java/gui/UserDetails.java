@@ -9,6 +9,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import model.App;
+import model.XML;
 
 public class UserDetails extends JFrame implements ActionListener {
 
@@ -26,8 +27,11 @@ public class UserDetails extends JFrame implements ActionListener {
 
 	private App app;
 
+
 	public UserDetails(App app, String nombreUsuario, String edad, String correo) {
 		this.app = app;
+
+
 
 		setTitle("Aplicación usuarios");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -112,6 +116,7 @@ public class UserDetails extends JFrame implements ActionListener {
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				File selectedFile = fileChooser.getSelectedFile();
 				System.out.println("Archivo seleccionado: " + selectedFile.getAbsolutePath());
+				app.exportXmlCurrUser(selectedFile);
 			} else {
 				System.out.println("Selección de archivo cancelada.");
 			}
@@ -126,9 +131,14 @@ public class UserDetails extends JFrame implements ActionListener {
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				File selectedFile = fileChooser.getSelectedFile();
 				System.out.println("Archivo seleccionado: " + selectedFile.getAbsolutePath());
+				app.exportToJson(selectedFile);
 			} else {
 				System.out.println("Selección de archivo cancelada.");
 			}
+		}
+
+		if(e.getSource() == btnVolver) {
+			dispose();
 		}
 	}
 }

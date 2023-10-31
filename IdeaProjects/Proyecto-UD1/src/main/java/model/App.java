@@ -1,8 +1,12 @@
 package model;
 
+import gui.UserDetails;
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class App {
     private final String filename = "usuarios.bin";
@@ -13,6 +17,7 @@ public class App {
 
 
     public App() {
+        session = new Session();
         users = new Users();
     }
 
@@ -23,7 +28,7 @@ public class App {
 
             if (BCrypt.checkpw(passwd, hash)) {
                 System.out.println("Logged in");
-                currUser = usuario;
+                session.setCurrentUser(users.getUserByName(userName));
                 return true;
             }
         }
@@ -33,9 +38,36 @@ public class App {
 
     }
 
+    /*public void openUserWindow() {
+        gui.User userWindow = new gui.User(this, currUser.getName());
+        userWindow.setVisible(true);
+    }*/
+
+    public void showUserDetailsWindow() {
+        String name = session.getCurrentUser().getName();
+        String age = session.getCurrentUser().getAge();
+        String mail = session.getCurrentUser().getEmail();
+
+        UserDetails userDetailsWindow = new UserDetails(this, name, age, mail);
+        userDetailsWindow.setVisible(true);
+    }
+
+    public void exportXmlCurrUser(File file) {
+        XML.exportXmlUser(session.getCurrentUser(), file);
+    }
+
+    public void exportToJson(File file) {
+        JSON.exportToJson(session.getCurrentUser(), file);
+    }
+
     public User getCurrUser() {
         return currUser;
     }
+
+    public void setCurrUser(User currUser) {
+        this.currUser = currUser;
+    }
+
 
 
 

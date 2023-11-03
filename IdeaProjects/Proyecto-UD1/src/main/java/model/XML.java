@@ -7,9 +7,6 @@ import java.io.IOException;
 
 public class XML {
 
-    private Session session;
-
-
     public static void exportXmlUser(User user, File file) {
 
         String name = user.getName();

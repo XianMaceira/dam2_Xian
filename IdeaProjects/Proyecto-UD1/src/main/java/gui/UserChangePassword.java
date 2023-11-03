@@ -52,11 +52,18 @@ public class UserChangePassword extends JFrame implements ActionListener {
 		btnCambiarContraseña.setBounds(124, 111, 89, 23);
 		btnCambiarContraseña.addActionListener(this);
 		contentPane.add(btnCambiarContraseña);
+
+		getRootPane().setDefaultButton(btnCambiarContraseña);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		if (e.getSource() == btnCambiarContraseña) {
+			app.changePassword(textoNuevoContraseña.getText());
+		}
+		if (e.getSource() == btnCancelar) {
+			dispose();
+		}
 	}
 
 }

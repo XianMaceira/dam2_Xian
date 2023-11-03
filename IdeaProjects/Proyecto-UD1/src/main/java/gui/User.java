@@ -97,6 +97,10 @@ public class User extends JFrame implements ActionListener {
 			app.showUserDetailsWindow();
 		}
 
+		//Boton Cambiar Contraseña
+		if (e.getSource() == btnCambiarContraseña) {
+			app.showChangePasswordWindow();
+		}
 
 		// Boton Exportar Usuarios
 		if(e.getSource() == btnExportarUsuarios) {
@@ -112,6 +116,14 @@ public class User extends JFrame implements ActionListener {
 				System.out.println("Selección de archivo cancelada.");
 			}
 		}
+
+		if (e.getSource() == btnCerrarSesion) {
+			Login loginWindow = new Login(app);
+			dispose();
+			loginWindow.setVisible(true);
+		}
+
+
 	}
 
 

@@ -12,7 +12,6 @@ import java.io.IOException;
 public class JSON {
 
 
-    private Session session;
 
         public static void exportToJson(User user, File file) {
 

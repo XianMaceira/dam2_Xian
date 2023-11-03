@@ -8,13 +8,29 @@ public class FileHandler {
     private static final String FILE_NAME = "usuarios.bin";
     private static final byte[] HEADER = { (byte) 0xFF, (byte) 0xEE, (byte) 0x20, (byte) 0x23, (byte) 0xEE, (byte) 0xFF };
 
-    public FileHandler(String filename) {
+    public FileHandler(String filename) throws IOException {
+
+        Users users;
+
+        File file = new File(filename);
+
+        if (!file.exists()) {
+            file.createNewFile();
+
+            User user = new User("admin", "admin", "0", "admin@admin");
+            users.addUser(user);
+
+        }
+
+        readUsers();
+        writeUsers(users.getUsers());
+
     }
 
 
     // Leer usuarios del fichero
-    public List<User> readUsers() {
-        List<User> users = new ArrayList<>();
+    public HashMap<String, User> readUsers() {
+        HashMap<String, User> users = new HashMap<>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             byte[] header = new byte[HEADER.length];
             ois.read(header);
@@ -24,7 +40,7 @@ public class FileHandler {
                 // Leer los usuarios
                 while (true) {
                     User user = (User) ois.readObject();
-                    users.add(user);
+                    users.put(user);
                 }
             }
         } catch (EOFException e) {
@@ -36,7 +52,7 @@ public class FileHandler {
     }
 
     // Escribir usuarios en el fichero
-    public void writeUsers(List<User> users) {
+    public void writeUsers(HashMap<String, User> users) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
             oos.write(HEADER);
 

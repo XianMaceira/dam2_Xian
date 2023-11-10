@@ -102,6 +102,15 @@ public class User extends JFrame implements ActionListener {
 			app.showChangePasswordWindow();
 		}
 
+		if (e.getSource() == btnCrearNuevoUsuario) {
+			app.createUserWindow();
+		}
+
+		if (e.getSource() == btnBorrarUsuario) {
+			app.deleteUserWindow();
+			dispose();
+		}
+
 		// Boton Exportar Usuarios
 		if(e.getSource() == btnExportarUsuarios) {
 			System.out.println("Exportar usuario (ZIP)");
@@ -117,10 +126,10 @@ public class User extends JFrame implements ActionListener {
 			}
 		}
 
+		// Boton Cerrar Sesion
 		if (e.getSource() == btnCerrarSesion) {
-			Login loginWindow = new Login(app);
 			dispose();
-			loginWindow.setVisible(true);
+			app.closeSession();
 		}
 
 

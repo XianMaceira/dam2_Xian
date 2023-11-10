@@ -60,6 +60,7 @@ public class UserChangePassword extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnCambiarContraseña) {
 			app.changePassword(textoNuevoContraseña.getText());
+			dispose();
 		}
 		if (e.getSource() == btnCancelar) {
 			dispose();

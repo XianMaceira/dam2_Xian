@@ -31,7 +31,7 @@ public class Session {
             logSessionEvent("LOGOUT");
             currentUser = null;
         }
-    }
+    }*/
 
     private void logSessionEvent(String eventType) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -47,5 +47,5 @@ public class Session {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 }

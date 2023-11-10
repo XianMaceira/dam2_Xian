@@ -7,6 +7,7 @@ import java.io.File;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.xml.parsers.ParserConfigurationException;
 
 import model.App;
 import model.XML;
@@ -116,7 +117,11 @@ public class UserDetails extends JFrame implements ActionListener {
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				File selectedFile = fileChooser.getSelectedFile();
 				System.out.println("Archivo seleccionado: " + selectedFile.getAbsolutePath());
-				app.exportXmlCurrUser(selectedFile);
+				try {
+					app.exportXmlCurrUser(selectedFile);
+				} catch (ParserConfigurationException ex) {
+					throw new RuntimeException(ex);
+				}
 			} else {
 				System.out.println("Selección de archivo cancelada.");
 			}

@@ -2,81 +2,83 @@ package model;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 public class FileHandler {
-    private static final String FILE_NAME = "usuarios.bin";
+    //private static final String FILE_NAME = "usuarios.bin";
     private static final byte[] HEADER = { (byte) 0xFF, (byte) 0xEE, (byte) 0x20, (byte) 0x23, (byte) 0xEE, (byte) 0xFF };
 
+    private File file;
+
     public FileHandler(String filename) throws IOException {
+        //Users users;
+        file = new File(filename);
+    }
 
-        Users users;
-
-        File file = new File(filename);
-
+    public Users load() throws IOException {
         if (!file.exists()) {
-            file.createNewFile();
-
-            User user = new User("admin", "admin", "0", "admin@admin");
-            users.addUser(user);
-
+            createFile();
+        } else if (checkHeader()){
+            return charge();
         }
-
-        readUsers();
-        writeUsers(users.getUsers());
-
+        return null;
     }
 
+    private boolean checkHeader() {
+        try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file))){
 
-    // Leer usuarios del fichero
-    public HashMap<String, User> readUsers() {
-        HashMap<String, User> users = new HashMap<>();
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
-            byte[] header = new byte[HEADER.length];
-            ois.read(header);
+            byte[] readBytes = bis.readNBytes(HEADER.length);
+            int result = Arrays.compare(HEADER, readBytes);
 
-            // Verificar la cabecera
-            if (isHeaderValid(header)) {
-                // Leer los usuarios
-                while (true) {
-                    User user = (User) ois.readObject();
-                    users.put(user);
-                }
-            }
-        } catch (EOFException e) {
-            // Fin del archivo
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return users;
-    }
-
-    // Escribir usuarios en el fichero
-    public void writeUsers(HashMap<String, User> users) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
-            oos.write(HEADER);
-
-            for (User user : users) {
-                oos.writeObject(user);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Verificar la cabecera del archivo
-    private boolean isHeaderValid(byte[] header) {
-        if (header.length != HEADER.length) {
-            return false;
-        }
-
-        for (int i = 0; i < HEADER.length; i++) {
-            if (header[i] != HEADER[i]) {
+            if (result==0) {
+                return true;
+            } else {
                 return false;
             }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Users charge() {
+        try (FileInputStream fis = new FileInputStream(file)){
+
+            fis.readNBytes(HEADER.length);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Users users = (Users) ois.readObject();
+            System.out.println(users);
+            return users;
+
+        } catch (IOException | ClassNotFoundException e) {
+            return null;
         }
 
-        return true;
+    }
+
+    public void createFile() throws IOException {
+        file.createNewFile();
+        Users userList = new Users();
+        User adminUser = new User("admin", "admin", "0", "admin@admin.local");
+        userList.addUser(adminUser);
+        saveUsers(userList);
+    }
+
+    public void saveUsers(Users users) {
+        FileOutputStream fos;
+        ObjectOutputStream oos;
+
+        try {
+            fos = new FileOutputStream(file);
+            fos.write(HEADER);
+            oos = new ObjectOutputStream(new FileOutputStream(file, true));
+            oos.writeObject(users);
+            oos.close();
+            fos.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

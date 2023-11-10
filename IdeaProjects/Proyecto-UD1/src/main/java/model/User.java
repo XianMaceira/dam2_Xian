@@ -5,6 +5,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.io.Serializable;
 
 public class User implements Serializable {
+
     private String name;
     private String password;
     private String age;
@@ -25,12 +26,16 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public String getPasswordHash() {
+    public void setPasswordHash(String passwordHash) {
+        this.password = passwordHash;
+    }
+
+    public String getPassword() {
         return password;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.password = passwordHash;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getAge() {
@@ -49,15 +54,17 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public void checkLogin(String password) {
+    public Boolean checkLogin(String password) {
 
-        String candidatePassword = password;
+        String candidatePassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
 
 
-        if (BCrypt.checkpw(candidatePassword, password)) {
+        if (BCrypt.checkpw(password, this.password)) {
             System.out.println("La contraseña es válida");
+            return true;
         } else {
             System.out.println("La contraseña no es válida");
+            return false;
         }
     }
 

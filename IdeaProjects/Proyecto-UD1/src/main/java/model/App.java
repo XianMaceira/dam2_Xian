@@ -1,9 +1,9 @@
 package model;
 
-import gui.UserChangePassword;
-import gui.UserDetails;
+import gui.*;
 import org.mindrot.jbcrypt.BCrypt;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -15,21 +15,21 @@ public class App {
     private Session session;
     private FileHandler fhandler;
 
-    private User currUser;
 
 
     public App() throws IOException {
         session = new Session();
-        users = new Users();
-        fhandler = new FileHandler();
+        fhandler = new FileHandler(filename);
+        users = fhandler.load();
+        showLoginWindow();
     }
 
     public boolean login(String userName, String passwd) {
         if (users.userExists(userName)) {
             User usuario = users.getUserByName(userName);
-            String hash = usuario.getPasswordHash();
-
-            if (BCrypt.checkpw(passwd, hash)) {
+            //String hash = usuario.getPasswordHash();
+            System.out.println(usuario);
+            if(usuario.checkLogin(passwd)) {
                 System.out.println("Logged in");
                 session.setCurrentUser(users.getUserByName(userName));
                 return true;
@@ -37,8 +37,6 @@ public class App {
         }
         System.out.println("Log In Failed");
         return false;
-
-
     }
 
     /*public void openUserWindow() {
@@ -55,7 +53,7 @@ public class App {
         userDetailsWindow.setVisible(true);
     }
 
-    public void exportXmlCurrUser(File file) {
+    public void exportXmlCurrUser(File file) throws ParserConfigurationException {
 
         XML.exportXmlUser(session.getCurrentUser(), file);
     }
@@ -72,23 +70,47 @@ public class App {
     public void changePassword(String newPassword) {
         String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt(10));
         session.getCurrentUser().setPasswordHash(hashedPassword);
-
-        System.out.println(session.getCurrentUser().getPasswordHash());
+        fhandler.saveUsers(users);
     }
 
-    public User getCurrUser() {
-        return currUser;
+    public void closeSession() {
+        session.setCurrentUser(null);
+        Login loginWindow = new Login(this);
+        loginWindow.setVisible(true);
     }
-
-    public void setCurrUser(User currUser) {
-        this.currUser = currUser;
-    }
-
-
-
 
     public Session getSession() {
         return session;
     }
 
+    public void createUserWindow() {
+        UserCreate createUserWindow = new UserCreate(this);
+        createUserWindow.setVisible(true);
+    }
+
+
+    public void createUser(String name, String passwd, String age, String mail) {
+        User newUser = new User(name, passwd, age, mail);
+        users.addUser(newUser);
+        fhandler.saveUsers(users);
+    }
+
+    public void deleteUserWindow() {
+        UserDelete deleteUserWindow = new UserDelete(this, session.getCurrentUser().getName());
+        deleteUserWindow.setVisible(true);
+    }
+
+    public void delUser() {
+        users.deleteUser(session.getCurrentUser().getName());
+        fhandler.saveUsers(users);
+    }
+
+    public void showUserWindow() {
+        gui.User userWindow = new gui.User(this, session.getCurrentUser().getName());
+        userWindow.setVisible(true);
+    }
+    public void showLoginWindow() {
+        Login loginWindow = new Login(this);
+        loginWindow.setVisible(true);
+    }
 }

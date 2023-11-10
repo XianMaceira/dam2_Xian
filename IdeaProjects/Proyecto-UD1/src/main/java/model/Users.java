@@ -1,8 +1,10 @@
 package model;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashMap;
 
-public class Users {
+public class Users implements Serializable {
     private HashMap<String, User> users = new HashMap<>();
 
 
@@ -37,5 +39,14 @@ public class Users {
         return users.containsKey(name);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        Collection<User> users = this.users.values();
+        for (User user : users) {
+            sb.append(user.toString()).append("\n");
+        }
+        return sb.toString();
+    }
 
 }

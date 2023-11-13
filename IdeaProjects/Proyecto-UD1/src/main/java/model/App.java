@@ -17,6 +17,7 @@ public class App {
 
 
 
+
     public App() throws IOException {
         session = new Session();
         fhandler = new FileHandler(filename);
@@ -32,6 +33,7 @@ public class App {
             if(usuario.checkLogin(passwd)) {
                 System.out.println("Logged in");
                 session.setCurrentUser(users.getUserByName(userName));
+                session.logSessionEvent("LOGIN");
                 return true;
             }
         }
@@ -74,6 +76,7 @@ public class App {
     }
 
     public void closeSession() {
+        session.logSessionEvent("LOGOUT");
         session.setCurrentUser(null);
         Login loginWindow = new Login(this);
         loginWindow.setVisible(true);
@@ -113,4 +116,18 @@ public class App {
         Login loginWindow = new Login(this);
         loginWindow.setVisible(true);
     }
+
+    public void exportAllUsersToXML(File file) throws ParserConfigurationException {
+        XML.exportAllUsersXML(users, file);
+    }
+
+    public void exportAllUsersToJSON(File file) {
+        JSON.exportAllUsersJSON(users, file);
+    }
+
+    public void zipExport (File file) throws ParserConfigurationException, IOException {
+        ZIP.exportAllUsersZip(this, file);
+    }
+
+
 }

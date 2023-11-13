@@ -4,10 +4,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicOptionPaneUI;
+import javax.xml.parsers.ParserConfigurationException;
 
 import model.App;
 import model.Users;
@@ -113,17 +115,19 @@ public class User extends JFrame implements ActionListener {
 
 		// Boton Exportar Usuarios
 		if(e.getSource() == btnExportarUsuarios) {
-			System.out.println("Exportar usuario (ZIP)");
 			JFileChooser fileChooser = new JFileChooser();
-			fileChooser.setSelectedFile(new File("usuarios.zip"));
-			int returnValue = fileChooser.showOpenDialog(null);
+			fileChooser.setSelectedFile(new File("users.zip"));
+			int value = fileChooser.showOpenDialog(null);
+			if (value == JFileChooser.APPROVE_OPTION) {
+				File file = fileChooser.getSelectedFile();
 
-			if (returnValue == JFileChooser.APPROVE_OPTION) {
-				File selectedFile = fileChooser.getSelectedFile();
-				System.out.println("Archivo seleccionado: " + selectedFile.getAbsolutePath());
-			} else {
-				System.out.println("Selección de archivo cancelada.");
+				try {
+					app.zipExport(file);
+				} catch (ParserConfigurationException | IOException ex) {
+					throw new RuntimeException(ex);
+				}
 			}
+
 		}
 
 		// Boton Cerrar Sesion

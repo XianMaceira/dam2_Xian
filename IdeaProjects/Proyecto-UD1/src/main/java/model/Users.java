@@ -13,6 +13,10 @@ public class Users implements Serializable {
         return users;
     }
 
+    public Collection<User> getAllUsers() {
+        return this.users.values();
+    }
+
     public void setUsers(HashMap<String, User> users) {
         this.users = users;
     }

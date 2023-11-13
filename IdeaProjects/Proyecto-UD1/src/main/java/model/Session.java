@@ -33,17 +33,12 @@ public class Session {
         }
     }*/
 
-    private void logSessionEvent(String eventType) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String timestamp = sdf.format(new Date());
+    public void logSessionEvent(String eventType) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String timestamp = format.format(new Date());
 
         try (FileWriter writer = new FileWriter("session.log", true)) {
-            if (currentUser != null) {
-                writer.write(timestamp + " " + currentUser.getName() + " " + eventType + "\n");
-            } else {
-                // No se registra un nombre de usuario si no hay usuario conectado
-                writer.write(timestamp + " " + "UNKNOWN" + " " + eventType + "\n");
-            }
+            writer.write(timestamp + " " + currentUser.getName() + " " + eventType + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         }

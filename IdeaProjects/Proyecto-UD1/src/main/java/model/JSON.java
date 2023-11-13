@@ -37,6 +37,42 @@ public class JSON {
                 e.printStackTrace();
             }
         }
+
+        public static void exportAllUsersJSON (Users users, File path) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            try {
+                if (!path.exists()) {
+                    path.mkdirs();
+                }
+
+                File file = new File(path, "users.json");
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bf = new BufferedWriter(fw);
+
+                bf.write("[\n");
+
+                boolean checkFirstUser = true;
+
+                for (User user: users.getAllUsers()) {
+                    String json = gson.toJson(user);
+
+                    if (!checkFirstUser) {
+                        bf.write(",\n");
+                    } else {
+                        checkFirstUser = false;
+                    }
+
+                    bf.write(json);
+                }
+
+                bf.write("\n");
+                bf.close();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 

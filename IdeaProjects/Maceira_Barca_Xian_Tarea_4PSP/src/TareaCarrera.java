@@ -13,24 +13,21 @@ class TareaCarrera implements Runnable {
         long tiempoTotal = 0;
 
         System.out.println(Thread.currentThread().getName() + " ha comenzado la carrera.");
+            for (int checkpoint = 1; checkpoint <= 6; checkpoint++) {
+                long tiempoTramo = 1000 + random.nextInt(101);
+                tiempoTotal += tiempoTramo;
 
-        for (int checkpoint = 1; checkpoint <= 6; checkpoint++) {
-            long tiempoTramo = 1000 + random.nextInt(101);
-            tiempoTotal += tiempoTramo;
+                System.out.println(Thread.currentThread().getName() + " ha pasado por el checkpoint " + checkpoint +
+                        " en " + tiempoTramo + " milisegundos.");
 
-            System.out.println(Thread.currentThread().getName() + " ha pasado por el checkpoint " + checkpoint +
-                    " en " + tiempoTramo + " milisegundos.");
+                contador.sumarTiempo(tiempoTramo);
 
-            // Envía el tiempo del tramo al contador común
-            contador.sumarTiempo(tiempoTramo);
-
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        }
-
         System.out.println("\n"+Thread.currentThread().getName() + ": Tiempo total ---> " +
                 tiempoTotal + " milisegundos.");
     }

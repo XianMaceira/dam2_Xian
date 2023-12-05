@@ -1,0 +1,22 @@
+{
+  "company": {
+    "employee": [
+      {
+        "firstname": "Tony",
+        "lastname": "Black",
+        "salary": 100000
+      },
+      {
+        "firstname": "Amy",
+        "lastname": "Green",
+        "salary": 200000,
+        "cars": {
+          "car": [
+            "Toyota",
+            "Ford"
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -5,6 +5,7 @@ public class Main {
         CrearBaseDatos.main(args);
         CrearTabla.main(args);
         CompletaLibros.main(args);
+        ConsultaLibros.main(args);
         ModificacionLibros.main(args);
         LimpiarTabla.main(args);
     }

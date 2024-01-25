@@ -3,28 +3,38 @@ import java.net.*;
 
 public class Servidor {
     public static void main(String[] args) {
-        final int puerto = 12345;
+        final int PORT = 12345;
 
-        try (ServerSocket serverSocket = new ServerSocket(puerto)) {
-            System.out.println("Servidor esperando conexiones en el puerto " + puerto);
+        try {
+            ServerSocket serverSocket = new ServerSocket(PORT);
+            System.out.println("Servidor en bucle esperando conexiones en el puerto " + PORT);
 
             while (true) {
-                try (Socket clientSocket = serverSocket.accept()) {
-                    System.out.println("Cliente conectado desde la IP: " + clientSocket.getInetAddress());
+                Socket clientSocket = serverSocket.accept();
+                System.out.println("Cliente conectado desde la IP: " + clientSocket.getInetAddress());
 
-                    BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                    PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                PrintWriter writer = new PrintWriter(clientSocket.getOutputStream(), true);
 
-                    String clienteIP = in.readLine();
-                    System.out.println("IP recibida del cliente: " + clienteIP);
+                String clientMessage = reader.readLine();
+                System.out.println("Mensaje recibido del cliente: " + clientMessage);
 
-                    if (clienteIP.equals(clientSocket.getInetAddress().getHostAddress())) {
-                        out.println("Respuesta del servidor: IP correcta");
-                    } else {
-                        out.println("Respuesta del servidor: IP incorrecta");
-                    }
+                if (clientMessage.equals(clientSocket.getInetAddress().getHostAddress())) {
+                    writer.println("IP del cliente: " + clientSocket.getInetAddress().getHostAddress());
+                } else {
+                    writer.println("Error: La IP no coincide.");
+                }
+
+                clientSocket.close();
+
+                if (clientMessage.equals("Exit")) {
+                    System.out.println("Servidor cerrado.");
+                    break;
                 }
             }
+
+            serverSocket.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -3,28 +3,35 @@ import java.net.*;
 
 public class Cliente {
     public static void main(String[] args) {
-        final String servidorIP = "127.0.0.1";
-        final int puerto = 12345;
+        final int PORT = 12345;
 
         try {
             for (int i = 1; i <= 5; i++) {
-                try (Socket socket = new Socket(servidorIP, puerto)) {
-                    PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                Socket socket = new Socket("localhost", PORT);
 
-                    // Enviar la IP al servidor
-                    out.println(InetAddress.getLocalHost().getHostAddress());
+                BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
 
-                    // Leer la respuesta del servidor
-                    BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                    System.out.println("Respuesta del servidor: " + in.readLine());
+                String clientIP = socket.getLocalAddress().getHostAddress();
 
-                    if (i == 5) {
-                        // Enviar "Exit" al servidor en la quinta conexión
-                        out.println("Exit");
-                    }
+                writer.println(clientIP);
+
+                String serverResponse = reader.readLine();
+                System.out.println("Respuesta del servidor: " + serverResponse);
+
+                socket.close();
+
+                if (i == 5) {
+                    socket = new Socket("localhost", PORT);
+                    writer = new PrintWriter(socket.getOutputStream(), true);
+                    writer.println("Exit");
+                    socket.close();
                 }
+
+                Thread.sleep(1000);
             }
-        } catch (IOException e) {
+
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }

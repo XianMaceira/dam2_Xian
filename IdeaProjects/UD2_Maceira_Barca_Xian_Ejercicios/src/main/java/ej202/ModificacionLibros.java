@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class ModificacionLibros {
     public static void main(String[] args) {
-        try (Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/tu_base_de_datos", "root", "abc123.")) {
+        try (Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/libros", "root", "abc123.")) {
 
             modificarTituloLibro(c, 1, "Nuevo Título");
 

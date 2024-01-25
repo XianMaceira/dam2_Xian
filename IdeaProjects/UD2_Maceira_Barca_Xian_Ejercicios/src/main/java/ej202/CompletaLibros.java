@@ -8,11 +8,11 @@ public class CompletaLibros {
 
 
 
-            insertarLibro(c, "Título1", "Autor1", 2000);
-            insertarLibro(c, "Título2", "Autor2", 2005);
-            insertarLibro(c, "Título3", "Autor3", 2010);
-            insertarLibro(c, "Título4", "Autor4", 2015);
-            insertarLibro(c, "Título5", "Autor5", 2020);
+            insertarLibro(c, "Cien años de soledad", "Gabriel García Márquez", 1967);
+            insertarLibro(c, "1984", "George Orwell", 1949);
+            insertarLibro(c, "El cuento de la criada", "Margaret Atwood ", 1985);
+            insertarLibro(c, "El señor de los anillos", "J.R.R. Tolkien", 1954);
+            insertarLibro(c, "Matar a un ruiseñor", "Harper Lee", 1960);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

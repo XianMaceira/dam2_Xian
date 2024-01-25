@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="AD_EXAMEN_UD1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ExameUD1-parte2.zip!/" />
+      <root url="jar://$PROJECT_DIR$/ExamenUD1-parte1.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

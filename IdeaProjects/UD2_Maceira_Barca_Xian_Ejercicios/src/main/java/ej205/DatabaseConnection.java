@@ -5,7 +5,20 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    public static void main(String[] args) throws SQLException {
-        Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "abc123.");
+   private String engine;
+
+    public DatabaseConnection(String engine) {
+        this.engine = engine;
+    }
+
+    public Connection getConnection() {
+        if (engine=="mysql") {
+
+        }
+
+        if (engine=="sqlite") {
+
+        }
+        return ;
     }
 }

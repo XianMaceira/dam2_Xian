@@ -2,24 +2,23 @@ package ej203;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class LimpiarTabla {
     public static void main(String[] args) {
-        try (Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/tareas", "root", "abc123.")) {
+        String url = "jdbc:sqlite:tareas.sqlite";
 
-            limpiarTablaTareas(c);
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement()) {
+
+            String limpiarTabla = "DELETE FROM tareas;";
+            stmt.execute(limpiarTabla);
+
+            System.out.println("Registros de la tabla tareas eliminados exitosamente.");
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static void limpiarTablaTareas(Connection connection) throws SQLException {
-        String sql = "DELETE FROM tareas";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.executeUpdate();
+            System.err.println(e.getMessage());
         }
     }
 }

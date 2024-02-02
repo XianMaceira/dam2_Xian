@@ -1,53 +1,33 @@
 package ej203;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class ModificaTareas {
     public static void main(String[] args) {
-        try (Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/tareas", "root", "abc123.")) {
+        String url = "jdbc:sqlite:tareas.sqlite";
 
-            modificarDescripcionTarea(c, 1, "Nueva Descripción");
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement()) {
 
-            modificarEstadoTarea(c, 2, "EN_PROCESO");
+            String modificarDescripcion = "UPDATE tareas SET descripcion = 'Nueva descripción' WHERE id = 1;";
+            stmt.execute(modificarDescripcion);
 
-            eliminarTarea(c, 3);
+            String modificarEstado = "UPDATE tareas SET estado = 'EN_PROCESO' WHERE id = 2;";
+            stmt.execute(modificarEstado);
 
-            eliminarTareasCompletadas(c);
+            String eliminarTarea = "DELETE FROM tareas WHERE id = 3;";
+            stmt.execute(eliminarTarea);
+
+            String eliminarCompletadas = "DELETE FROM tareas WHERE estado = 'COMPLETADA';";
+            stmt.execute(eliminarCompletadas);
+
+            System.out.println("Modificaciones realizadas exitosamente.");
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static void modificarDescripcionTarea(Connection connection, int idTarea, String nuevaDescripcion) throws SQLException {
-        String sql = "UPDATE tareas SET descripcion = ? WHERE id = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, nuevaDescripcion);
-            preparedStatement.setInt(2, idTarea);
-            preparedStatement.executeUpdate();
-        }
-    }
-
-    private static void modificarEstadoTarea(Connection connection, int idTarea, String nuevoEstado) throws SQLException {
-        String sql = "UPDATE tareas SET estado = ? WHERE id = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, nuevoEstado);
-            preparedStatement.setInt(2, idTarea);
-            preparedStatement.executeUpdate();
-        }
-    }
-
-    private static void eliminarTarea(Connection connection, int idTarea) throws SQLException {
-        String sql = "DELETE FROM tareas WHERE id = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1, idTarea);
-            preparedStatement.executeUpdate();
-        }
-    }
-
-    private static void eliminarTareasCompletadas(Connection connection) throws SQLException {
-        String sql = "DELETE FROM tareas WHERE estado = 'COMPLETADA'";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.executeUpdate();
+            System.err.println(e.getMessage());
         }
     }
 }

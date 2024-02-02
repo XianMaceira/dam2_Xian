@@ -1,31 +1,33 @@
 package ej203;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class CompletaTareas {
     public static void main(String[] args) {
-        try (Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/libros", "root", "abc123.")) {
+        String url = "jdbc:sqlite:tareas.sqlite";
 
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement()) {
 
+            String[] tareas = {
+                    "INSERT INTO tareas (descripcion, fecha_creacion, estado) VALUES ('Tarea 1', '2022-01-01', 'PENDIENTE');",
+                    "INSERT INTO tareas (descripcion, fecha_creacion, estado) VALUES ('Tarea 2', '2022-01-02', 'EN_PROCESO');",
+                    "INSERT INTO tareas (descripcion, fecha_creacion, estado) VALUES ('Tarea 3', '2022-01-03', 'COMPLETADA');",
+                    "INSERT INTO tareas (descripcion, fecha_creacion, estado) VALUES ('Tarea 4', '2022-01-04', 'PENDIENTE');",
+                    "INSERT INTO tareas (descripcion, fecha_creacion, estado) VALUES ('Tarea 5', '2022-01-05', 'EN_PROCESO');"
+            };
 
-            insertarTarea(c, "Tarea1", "01/01/2024", "PENDIENTE");
-            insertarTarea(c, "Tarea2", "02/01/2024", "PENDIENTE");
-            insertarTarea(c, "Tarea3", "06/11/2022", "EN_PROCESO");
-            insertarTarea(c, "Tarea4", "01/01/2019", "COMPLETADA");
-            insertarTarea(c, "Tarea5", "01/01/2018", "PENDIENTE");
+            for (String tarea : tareas) {
+                stmt.execute(tarea);
+            }
+
+            System.out.println("Tareas de ejemplo insertadas exitosamente.");
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static void insertarTarea(Connection connection, String descripcion, String fecha_creacion, String estado) throws SQLException {
-        String sql = "INSERT INTO libros (descripcion, fecha_creacion, estado) VALUES (?, ?, ?)";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, descripcion);
-            preparedStatement.setString(2, fecha_creacion);
-            preparedStatement.setString(3, estado);
-            preparedStatement.executeUpdate();
+            System.err.println(e.getMessage());
         }
     }
 }
+

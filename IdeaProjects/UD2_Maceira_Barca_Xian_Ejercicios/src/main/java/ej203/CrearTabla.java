@@ -1,5 +1,4 @@
 package ej203;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,13 +6,25 @@ import java.sql.Statement;
 
 public class CrearTabla {
     public static void main(String[] args) {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/libros", "root", "abc123.")) {
-            Statement statement = connection.createStatement();
-            String createTableQuery = "CREATE TABLE IF NOT EXISTS tareas (id INT AUTO_INCREMENT PRIMARY KEY, descripcion VARCHAR(255), fecha_creacion DATETIME, estado ENUM('PENDIENTE', 'EN_PROCESO', 'COMPLETADA'))";
-            statement.executeUpdate(createTableQuery);
-            System.out.println("Tabla 'tareas' creada correctamente.");
+        String url = "jdbc:sqlite:tareas.sqlite";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement()) {
+
+            String sql = "CREATE TABLE IF NOT EXISTS tareas (\n"
+                    + "id INTEGER PRIMARY KEY AUTOINCREMENT,\n"
+                    + "descripcion TEXT NOT NULL,\n"
+                    + "fecha_creacion TEXT NOT NULL,\n"
+                    + "estado TEXT NOT NULL\n"
+                    + ");";
+
+            stmt.execute(sql);
+
+            System.out.println("Tabla tareas creada exitosamente.");
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
 }
+

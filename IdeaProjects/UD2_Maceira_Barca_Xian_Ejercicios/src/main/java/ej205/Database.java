@@ -10,8 +10,11 @@ public class Database {
         this.databaseConnection = databaseConnection;
     }
 
-    public void createDatabase() {
+    public void createDatabase(boolean deleteExisting) {
         try (Statement statement = databaseConnection.getConnection().createStatement()) {
+            if (deleteExisting) {
+                statement.executeUpdate("DROP DATABASE IF EXISTS biblioteca");
+            }
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS biblioteca");
             statement.executeUpdate("USE biblioteca");
         } catch (SQLException e) {

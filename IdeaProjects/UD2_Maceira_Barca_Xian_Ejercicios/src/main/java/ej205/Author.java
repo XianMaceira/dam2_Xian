@@ -16,7 +16,8 @@ public class Author {
              ResultSet resultSet = statement.executeQuery("SELECT * FROM autores")) {
 
             while (resultSet.next()) {
-                // Procesar resultados
+                System.out.println("Nombre: " + resultSet.getString("nombre") +
+                        ", Apellidos: " + resultSet.getString("apellidos"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -30,11 +31,12 @@ public class Author {
                      "GROUP BY autores.id, autores.nombre, autores.apellidos")) {
 
             while (resultSet.next()) {
-                // Procesar resultados
+                System.out.println("Nombre: " + resultSet.getString("nombre") +
+                        ", Apellidos: " + resultSet.getString("apellidos") +
+                        ", Cantidad de libros: " + resultSet.getInt("cantidad_libros"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 }
-

@@ -16,7 +16,9 @@ public class Book {
              ResultSet resultSet = statement.executeQuery("SELECT libros.titulo, autores.nombre, autores.apellidos, libros.anio_publicacion FROM libros JOIN autores ON libros.autor_id = autores.id")) {
 
             while (resultSet.next()) {
-                // Procesar resultados
+                System.out.println("Título: " + resultSet.getString("titulo") +
+                        ", Autor: " + resultSet.getString("nombre") + " " + resultSet.getString("apellidos") +
+                        ", Año de publicación: " + resultSet.getInt("anio_publicacion"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -30,11 +32,12 @@ public class Book {
                      "WHERE autores.nombre = '" + authorName + "' AND autores.apellidos = '" + authorLastName + "'")) {
 
             while (resultSet.next()) {
-                // Procesar resultados
+                System.out.println("Título: " + resultSet.getString("titulo") +
+                        ", Autor: " + resultSet.getString("nombre") + " " + resultSet.getString("apellidos") +
+                        ", Año de publicación: " + resultSet.getInt("anio_publicacion"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 }
-

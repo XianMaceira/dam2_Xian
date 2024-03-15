@@ -1,61 +1,72 @@
 package ej208;
 
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Scanner;
 
+import static ej208.CreateTables.createTables;
+import static ej208.loadFromJSON.loadFromJSON;
+import static ej208.addToDatabase.*;
+
+
 public class Main {
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int opcion;
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:gestionMusica.db")) {
+            createTables(connection);
 
-        do {
-            mostrarMenu();
-            opcion = scanner.nextInt();
-            scanner.nextLine();
+            Scanner scanner = new Scanner(System.in);
+            int option;
+            do {
+                showMenu();
+                System.out.print("Selecciona una opción: ");
+                option = scanner.nextInt();
 
-            switch (opcion) {
-                case 1:
-                    //cargarDesdeJSON();
-                    break;
-                case 2:
-                  //  agregarCancion();
-                    break;
-                case 3:
-                 //   agregarUsuario();
-                    break;
-                case 4:
-                  //  crearListaReproduccion();
-                    break;
-                case 5:
-                  //  agregarCancionALista();
-                    break;
-                case 6:
-                  //  eliminarListaReproduccion();
-                    break;
-                case 7:
-                  //  mostrarInformacion();
-                    break;
-                case 8:
-                   // exportarAXML();
-                    break;
-                case 9:
-                    System.out.println("Saliendo del programa...");
-                    break;
-                default:
-                    System.out.println("Opción no válida, por favor ingrese una opción válida.");
-            }
-
-        } while (opcion != 9);
-
-        scanner.close();
+                switch (option) {
+                    case 1:
+                        loadFromJSON();
+                        break;
+                    case 2:
+                        addUser();
+                        break;
+                    case 3:
+                        addSong();
+                        break;
+                    case 4:
+                        createPlaylist();
+                        break;
+                    case 5:
+                        addSongToPlaylist();
+                        break;
+                    case 6:
+                        deletePlaylist();
+                        break;
+                    case 7:
+                        showInfo();
+                        break;
+                    case 8:
+                        exportToXML();
+                        break;
+                    case 9:
+                        System.out.println("Saliendo...");
+                        break;
+                    default:
+                        System.out.println("Opción no válida.");
+                        break;
+                }
+            } while (option != 9);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    static void mostrarMenu() {
+
+    static void showMenu() {
         System.out.println("--- Menú ---");
         System.out.println("1. Cargar canciones y usuarios desde un fichero JSON");
-        System.out.println("2. Agregar nueva canción");
-        System.out.println("3. Agregar nuevo usuario");
+        System.out.println("2. Agregar nuevo usuario");
+        System.out.println("3. Agregar nueva cancion");
         System.out.println("4. Crear lista de reproducción");
         System.out.println("5. Agregar canción a lista de reproducción");
         System.out.println("6. Eliminar lista de reproducción");
